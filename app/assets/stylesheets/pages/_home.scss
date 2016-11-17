@@ -2,3 +2,29 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+body {
+  background-image: url("background.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.transbox {
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  width: 90%;
+  height: 80%;
+
+  margin: auto;
+
+  border-radius: 10px
+}
+
+.title {
+  color: white;
+}

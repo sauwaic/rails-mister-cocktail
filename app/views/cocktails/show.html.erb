@@ -1,19 +1,38 @@
-<h1 class="text-center"><%= @cocktail.name %></h1>
+<div class="transbox">
+  <h1 class="text-center"><%= @cocktail.name %></h1>
 
-<h4>Ingredients:</h4>
-<ul>
- <% @cocktail.doses.each do |dose| %>
- <li> <h6> <%= dose.ingredient.name %> |
-   <%= dose.description %> </h6> | <%= link_to "Delete", dose_path(dose.id), method: :delete %>
- </li>
- <% end %>
-</ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
 
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-<%= f.input :ingredient_id, collection: Ingredient.all.sort_by { |ingredient| ingredient.name } %>
-<%= f.input :description %>
-<%= f.submit "Add a new dose", class: "btn btn-danger" %>
-<% end %>
+        <h2>Ingredients:</h2>
+        <ul class="fa-ul">
+         <% @cocktail.doses.each do |dose| %>
+         <li> <i class="fa-li fa fa-glass"></i> <h4 class="ingredient-list-font"> <%= dose.ingredient.name %> |
+           <%= " \"#{dose.description}\" " %> | (<%= link_to "Delete", dose_path(dose.id), method: :delete %>) </h4>
+         </li>
+         <% end %>
+       </ul>
 
-<%= link_to "Back to all cocktails", cocktails_path, class: "btn btn-primary" %>
+     </div>
 
+   </div>
+   <br>
+   <%= render 'layouts/share_links' %>
+ </div>
+
+
+ <div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <h2>Add an ingredient:</h2>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :ingredient_id, collection: Ingredient.all.sort_by { |ingredient| ingredient.name }, prompt: "Choose ingredient", label: false %>
+      <%= f.input :description, placeholder: "Description", label: false %>
+      <%= f.submit "+", class: "btn btn-danger btn-circle-red" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+</div>

@@ -1,10 +1,13 @@
 .card {
-  height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
-  margin: 0 5px 5px 0;
+  border-radius: 50%;
+  height: auto;
+  width: 100%;
+  padding-top: 100%
+
 }
 .card-user {
   position: absolute;
@@ -13,15 +16,16 @@
 }
 .card-category {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  bottom: 70px;
+  left: 5px;
   font-size: 10px;
   text-transform: uppercase;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
 }
 .card-description {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 30px;
+  left: 5px;
 }
 .card-description h2 {
   font-size: 24px;
@@ -38,6 +42,8 @@
   z-index:2;
   background: black;
   opacity: 0;
+  border-radius: 50%;
+
 }
 .card-link:hover{
   opacity: 0.1;

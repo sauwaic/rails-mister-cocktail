@@ -1,6 +1,16 @@
-<h1 class="text-center">Add a cocktail:</h1>
-
-<%= simple_form_for @cocktail do |c| %>
-  <%= c.input :name %>
-  <%= c.submit "Add a new cocktail", class: "btn btn-danger" %>
-<% end %>
+<div class="transbox">
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-6 col-md-6 col-md-offset-3">
+    <h1 class="text-center ">Add a cocktail:</h1>
+    <br>
+      <div class="text-center">
+        <%= simple_form_for @cocktail, :html => {:class => "form-inline"} do |c| %>
+        <%= c.input :name, placeholder: "Name of cocktail", label: false %>
+        <%= c.submit "+", class: "btn btn-danger btn-circle-red" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
