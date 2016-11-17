@@ -1,0 +1,26 @@
+<h1 class="text-center"> Cocktails at your fingertips: </h1>
+
+
+<div class="container padded">
+  <div class="row">
+  <% @cocktails.each do |cocktail| %>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/300/food');">
+        <div class="card-category">Popular</div>
+        <div class="card-description">
+          <h2> <%= cocktail.name %> </h2>
+        </div>
+        <img class="card-user avatar" src="user.jpg">
+        <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+      </div>
+    </div>
+
+      <% end %>
+
+
+  </div>
+</div>
+
+<div class="container padded">
+<%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-danger" %>
+</div>

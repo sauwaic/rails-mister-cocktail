@@ -1,0 +1,19 @@
+<h1 class="text-center"><%= @cocktail.name %></h1>
+
+<h4>Ingredients:</h4>
+<ul>
+ <% @cocktail.doses.each do |dose| %>
+ <li> <h6> <%= dose.ingredient.name %> |
+   <%= dose.description %> </h6> | <%= link_to "Delete", dose_path(dose.id), method: :delete %>
+ </li>
+ <% end %>
+</ul>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+<%= f.input :ingredient_id, collection: Ingredient.all.sort_by { |ingredient| ingredient.name } %>
+<%= f.input :description %>
+<%= f.submit "Add a new dose", class: "btn btn-danger" %>
+<% end %>
+
+<%= link_to "Back to all cocktails", cocktails_path, class: "btn btn-primary" %>
+
