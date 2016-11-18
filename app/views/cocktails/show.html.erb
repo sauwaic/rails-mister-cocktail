@@ -1,43 +1,50 @@
-<div class="transbox">
-  <h1 class="text-center"><%= @cocktail.name %></h1>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+    <div class="transbox">
+          <br>
+          <h1 class="text-center"><%= @cocktail.name %></h1>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <div class="text-center">
-          <%= image_tag @cocktail.photo.url(:circle_show), style: "border-radius: 50%" %>
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="text-center">
+                  <%= image_tag @cocktail.photo.url(:circle_show), style: "border-radius: 50%" %>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+
+                <h2>Ingredients:</h2>
+                <ul class="fa-ul">
+                 <% @cocktail.doses.each do |dose| %>
+                 <li> <i class="fa-li fa fa-glass"></i> <h4 class="ingredient-list-font"> <%= dose.ingredient.name %> |
+                   <%= " \"#{dose.description}\" " %> | (<%= link_to "Delete", dose_path(dose.id), method: :delete %>) </h4>
+                 </li>
+                 <% end %>
+               </ul>
+
+             </div>
+
+           </div>
+           <br>
+           <br>
+           <%= render 'layouts/share_links' %>
+         </div>
+
+         <div class="container padded">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+              <h2>Add an ingredient:</h2>
+              <%= simple_form_for [@cocktail, @dose] do |f| %>
+              <%= f.input :ingredient_id, collection: Ingredient.all.sort_by { |ingredient| ingredient.name }, prompt: "Choose ingredient", label: false %>
+              <%= f.input :description, placeholder: "Description", label: false %>
+              <%= f.submit "+", class: "btn btn-danger btn-circle-red" %>
+              <% end %>
+
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-xs-12 col-md-6">
-
-        <h2>Ingredients:</h2>
-        <ul class="fa-ul">
-         <% @cocktail.doses.each do |dose| %>
-         <li> <i class="fa-li fa fa-glass"></i> <h4 class="ingredient-list-font"> <%= dose.ingredient.name %> |
-           <%= " \"#{dose.description}\" " %> | (<%= link_to "Delete", dose_path(dose.id), method: :delete %>) </h4>
-         </li>
-         <% end %>
-       </ul>
-
-     </div>
-
    </div>
-   <br>
-   <br>
-   <%= render 'layouts/share_links' %>
- </div>
-
- <div class="container padded">
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <h2>Add an ingredient:</h2>
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.input :ingredient_id, collection: Ingredient.all.sort_by { |ingredient| ingredient.name }, prompt: "Choose ingredient", label: false %>
-      <%= f.input :description, placeholder: "Description", label: false %>
-      <%= f.submit "+", class: "btn btn-danger btn-circle-red" %>
-      <% end %>
-
-    </div>
-  </div>
-</div>
 </div>
