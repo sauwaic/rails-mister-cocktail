@@ -21,4 +21,7 @@ ing_array.each do |ingredient|
   Ingredient.create(name: ingredient["strIngredient1"])
 end
 
-
+Cocktail.create(name: "Mojito", picture_url: "mojito.jpg")
+Cocktail.create(name: "Screwdriver", picture_url: "screwdriver.jpg")
+Cocktail.create(name: "Whiskey Sour", picture_url: "whiskey_sour.jpg")
+Cocktail.create(name: "Gin and tonic", picture_url: "gin_and_tonic.jpg")
